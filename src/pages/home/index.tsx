@@ -4,6 +4,8 @@ import style from './index.module.less';
 import { Tabs } from 'antd-mobile';
 import { commonTags, menuContent } from '@/server/home'
 import ModuleType1 from './components/ModuleType1'
+import ModuleType2 from './components/ModuleType2'
+import ModuleType3 from './components/ModuleType3'
 
 class Home extends Component<any, any> {
   constructor(props){
@@ -44,11 +46,7 @@ class Home extends Component<any, any> {
 
 
   render(){
-    // console.log('state', this.state);
     const { tabs, contentList } = this.state;
-    // tabs.map(tab => {tab.title = tab.homeMenuName});
-
-    // const modules = this.props.modules;
     return(
       <div>
         <div className={style.tabCon}>
@@ -57,7 +55,24 @@ class Home extends Component<any, any> {
 
         <div className={style.homeCon} id="homeCon">
           { contentList.map(item => 
-            item.type === 1 && <div key={item.id}><ModuleType1 list={item.carouselList}/></div>,
+            item.type === 1 && 
+            <div key={item.id}>
+              <ModuleType1 list={item.moduleOne}/>
+            </div> 
+            ||
+            item.type === 2 && 
+            <div key={item.id}>
+              <ModuleType2 
+                title={item.moduleTwo.title}
+                linkAddress={item.moduleTwo.linkAddress}
+                imgSrc={item.moduleTwo.imgSrc}
+              />
+            </div>
+            ||
+            item.type === 3 && 
+            <div key={item.id}>
+              <ModuleType3 list={item.moduleThree}/>
+            </div>, 
           )}
         </div>
       </div>
