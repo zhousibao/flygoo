@@ -27,7 +27,7 @@ axios.interceptors.response.use(function(response) {
 
 
 // http request
-export default function request({ url, method = 'POST', json = true, params = '', data= '' }){
+export default function request({ url, method = 'POST', json = true, params = {}, data= {}}){
   return new Promise((resolve, reject) => {
     axios({
       url,

@@ -18,12 +18,15 @@ typescript、react、redux、redux-saga、react-router-dom、axios、less、sass
 
 ## 项目依赖介绍
 
-- 基础依赖: react-router-dom react-redux redux redux-saga 
+- 路由: react-router-dom、@types/react-router-dom
+- 数据管理react-redux、@types/react-redux、redux、redux-saga 
 - 组件库按需加载: antd-mobile、babel-plugin-import 
 - 配置lessModule: less、less-loader 
 - 从文件读取配置变量: env-cmd
-- 日期时间 moment
-- 加载进度 nprogress
+- 日期时间: moment
+- 加载进度: nprogress
+- 本地代理: http-proxy-middleware
+- EventEmitter事件总栈: events
 
 
 ## Learn More

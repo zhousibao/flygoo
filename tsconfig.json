@@ -19,6 +19,12 @@
     "noEmit": true,
     "jsx": "react",
     "experimentalDecorators":true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "src"

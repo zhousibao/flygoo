@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Result, Button } from 'antd';
+// import { Result, Button } from 'antd';
 import { Link } from 'react-router-dom'
 
 // 参数1: mapStateToProps = state => ({app:state.app})
@@ -51,7 +51,8 @@ class NoFound extends Component {
     // 不要在render里面修改state,会触发死循环导致栈溢出。
     return (
       <div>
-        <Result
+        404
+        {/* <Result
           status="404"
           title="404"
           subTitle="抱歉，你访问的页面不存在。"
@@ -60,7 +61,7 @@ class NoFound extends Component {
               <Button type="primary">返回首页</Button>
             </Link>
           }
-        />
+        /> */}
       </div>
     )
   }
