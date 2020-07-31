@@ -8,11 +8,9 @@ import store from '@/redux'
 import Router from '@/router'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Router />
+  </Provider>,
   document.getElementById('root'),
 );
 

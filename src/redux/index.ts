@@ -2,10 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import createSagaMiddleware from "redux-saga";
 
 // reducer 模块  => 初始化store, 修改状态的函数
-import app from './modules/app'
-import permission from './modules/permission'
-import dictionary from './modules/dictionary'
-
+import user from './modules/user'
 
 // saga 模块
 import appSage from './saga'
@@ -13,11 +10,8 @@ import appSage from './saga'
 // 创建saga中间件并注册
 const sagaMiddleware = createSagaMiddleware();
 
-
 const rootReducer = combineReducers({
-  app,
-  permission,
-  dictionary,
+  user,
 });
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
 
@@ -32,4 +26,4 @@ export default store
 // dispatch 提交更新
 // subscribe 变更订阅
 
-// 使用方法请参考pages/noFound.index.js
+// 使用方法请参考pages/404.tsx
