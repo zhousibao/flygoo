@@ -6,6 +6,7 @@ import { commonTags, menuContent } from '@/server/home'
 import ModuleType1 from './components/ModuleType1'
 import ModuleType2 from './components/ModuleType2'
 import ModuleType3 from './components/ModuleType3'
+import ModuleType4 from './components/ModuleType4'
 
 class Home extends Component<any, any> {
   constructor(props){
@@ -72,6 +73,11 @@ class Home extends Component<any, any> {
             item.type === 3 && 
             <div key={item.id}>
               <ModuleType3 list={item.moduleThree}/>
+            </div>
+            ||
+            item.type === 4 && 
+            <div key={item.id}>
+              <ModuleType4 detail={item.moduleFour} />
             </div>, 
           )}
         </div>
