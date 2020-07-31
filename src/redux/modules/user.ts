@@ -1,4 +1,4 @@
-const defaultState:IStateUser= {
+const defaultState:IStoreUser= {
   token: '', 
   userInfo: {}, // 用户信息
 }

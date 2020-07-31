@@ -147,7 +147,7 @@ class Login extends React.Component<any, any>{
 /**
  * @description 官方写法
  */
-// const mapStateToProps = (state:IState) => state.user
+// const mapStateToProps = (state:IStore) => state.user
 // const mapDispatchToProps = dispatch => ({
 //   setToken: (token:string) => dispatch({ type: 'set_token', payload: token }),
 //   setUserInfo: (userInfo:IAnyObj) => dispatch({ type: 'set_userInfo', payload: userInfo }),
@@ -158,7 +158,7 @@ class Login extends React.Component<any, any>{
  * @description 完整写法
  */
 // export default connect(
-//   (state:IState) => state.user,
+//   (state:IStore) => state.user,
 //   dispatch => ({
 //     // 同步返回对象
 //     setToken: (token:string) => dispatch({ type: 'set_token', payload: token }),
@@ -179,7 +179,7 @@ class Login extends React.Component<any, any>{
  * @description 简洁写法
  */
 export default connect(
-  (state:IState) => state.user,
+  (state:IStore) => state.user,
   {
     setToken: (token:string) => ({ type: 'set_token', payload: token }),
     setUserInfo: (userInfo:IAnyObj) => ({ type: 'set_userInfo', payload: userInfo }),

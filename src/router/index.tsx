@@ -3,7 +3,7 @@ import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 
 import App from '@/App';
-import NoFound from '@/pages/404'
+import NoFound from '@/pages/noFound'
 
 /***
  * 路由懒加载  

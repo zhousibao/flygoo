@@ -10,12 +10,12 @@ interface IAction {
  * @description 根Store
  * 每次添加新模块，需要修改
  */
-interface IState {
-  user:IStateUser
+interface IStore {
+  user:IStoreUser
 }
 
 // 模块store
-interface IStateUser {
+interface IStoreUser {
   token:string;
   userInfo:IAnyObj;
 }

@@ -29,6 +29,10 @@ typescript、react、redux、redux-saga、react-router-dom、axios、less、sass
 - EventEmitter事件总栈: events
 
 
+## 温馨提示
+- react life cycle 请查看src/pages/NoFound.tsx
+- redux关联组件 请查看src/pages/login/index.tsx
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

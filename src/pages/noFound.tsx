@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
-// import { Result, Button } from 'antd';
+import { Result, Flex, WhiteSpace } from 'antd-mobile';
 import { Link } from 'react-router-dom'
 
-export default class NoFound extends Component {
+
+interface IState {
+  count:number
+}
+
+
+export default class NoFound extends Component<IState> {
   /**
    * 挂载阶段
    */
@@ -10,9 +16,17 @@ export default class NoFound extends Component {
   // 初始化阶段
   constructor(props){
     super(props)
-    this.state = { }
+    this.state = {
+      count: 0,
+    }
 
-    console.log('props', props)
+    console.log('constructor props', props)
+  }
+
+  handleClick = () => {
+    this.setState((state:IState, props) => {
+      return { count: ++state.count }
+    })
   }
   
   static getDerivedStateFromProps(props, state){
@@ -27,17 +41,23 @@ export default class NoFound extends Component {
     // 不要在render里面修改state,会触发死循环导致栈溢出。
     return (
       <div>
-        404
-        {/* <Result
-          status="404"
-          title="404"
-          subTitle="抱歉，你访问的页面不存在。"
-          extra={
-            <Link to="/admin/home">
-              <Button type="primary">返回首页</Button>
-            </Link>
-          }
-        /> */}
+        <Result
+          title="NoFound"
+          message="抱歉，你访问的页面不存在。"
+        />
+
+        <WhiteSpace size="lg" />
+
+        <Flex justify="center">
+          <div onClick={this.handleClick} style={{ 'color': '#999' }}>点击更新state</div>
+        </Flex>
+
+        <WhiteSpace size="lg" />
+
+        <Flex justify="center">
+          <Link to="/home">返回首页</Link>
+        </Flex>
+        
       </div>
     )
   }
