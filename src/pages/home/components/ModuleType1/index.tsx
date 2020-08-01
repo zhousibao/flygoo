@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Carousel } from 'antd-mobile'
 import style from './index.module.less';
-import  Image  from '@/components'
+import  { Image }  from '@/components'
 
 interface ImgObj {
   id:number;

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import style from './index.module.less';
-import Image  from '@/components'
+import { Image }  from '@/components'
 
 interface ImgObj {
   id:number;

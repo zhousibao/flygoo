@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import style from './index.module.less';
-
 import { Tabs } from 'antd-mobile';
+
+import { Footer } from '@/components';
 import { commonTags, menuContent } from '@/server/home'
 import ModuleType1 from './components/ModuleType1'
 import ModuleType2 from './components/ModuleType2'
 import ModuleType3 from './components/ModuleType3'
 import ModuleType4 from './components/ModuleType4'
+
+import style from './index.module.less';
 
 class Home extends Component<any, any> {
   constructor(props){
@@ -81,6 +83,8 @@ class Home extends Component<any, any> {
             </div>, 
           )}
         </div>
+
+        <Footer/>
       </div>
     )
   }
