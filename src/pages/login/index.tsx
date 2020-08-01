@@ -4,26 +4,28 @@ import { Flex, InputItem, Button, WingBlank, WhiteSpace, Toast } from 'antd-mobi
 import style from './index.module.less';
 import { getCode, login } from '@/server/login'
 
+interface IState {
+  phone:string;
+  msgCode:string;
+  tip:string;
+  canTip:boolean;
+}
 
-class Login extends React.Component<any, any>{
-  constructor(props){
-    super(props);
-
-    this.state = {
-      phone: '15555115232',
-      msgCode: '123456',
-      tip: '获取验证码', //获取验证码按钮文本
-      canTip: false, //是否禁用验证码按钮
-    }
-
+class Login extends React.Component<any, IState>{
+  public state: Readonly<IState> = {
+    phone: '15555115232',
+    msgCode: '123456',
+    tip: '获取验证码', //获取验证码按钮文本
+    canTip: false, //是否禁用验证码按钮
   }
+  
 
-  //表单获取value
-  onChange(key:string, val:string){
-    console.log(this.props)
+  // 表单获取value
+  // Pick 从复合类型中获取几个想要的类型组合
+  onChange = (key:string, val:string) => {
     this.setState({
       [key]: val,
-    })
+    } as Pick<IState, 'phone' | 'msgCode'>)
   }
 
   //获取验证码

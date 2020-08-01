@@ -1,31 +1,40 @@
-import React, { Component } from 'react'
+import React, { Component, ReactNode } from 'react'
 import { Result, Flex, WhiteSpace } from 'antd-mobile';
 import { Link } from 'react-router-dom'
 
+interface IProps {
+
+}
 
 interface IState {
   count:number
 }
 
-
-export default class NoFound extends Component<IState> {
+//使用泛型进行 Props、 State 的类型定义，定义后在使用 this.state 和 this.props 时可以在编辑器中获得更好的智能提示，并且会对类型进行检查。
+export default class NoFound extends Component<IProps, IState> {
   /**
    * 挂载阶段
    */
-
-  // 初始化阶段
-  constructor(props){
-    super(props)
-    this.state = {
-      count: 0,
-    }
-
-    console.log('constructor props', props)
+  
+  // Readonly是泛型的类型别名，将对应的所有属性设置为只读属性，不能对其直接赋值。
+  public state: Readonly<IState> = {
+    count: 0,
   }
 
+  
+  // 初始化阶段
+  // constructor(props){
+  //   super(props)
+  //   this.state = {
+  //     count: 0,
+  //   }
+
+  //   console.log('constructor props', props)
+  // }
+
   handleClick = () => {
-    this.setState((state:IState, props) => {
-      return { count: ++state.count }
+    this.setState((state, props) => {
+      return { count: state.count + 1 }
     })
   }
   
