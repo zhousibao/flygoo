@@ -12,6 +12,7 @@ const Home = lazy(() => import('@/pages/home'))
 const Login = lazy(() => import('@/pages/login'))
 const Mine = lazy(() => import('@/pages/mine'))
 const AddressList = lazy(() => import('@/pages/address/list'))
+const AddressCreate = lazy(() => import('@/pages/address/create'))
 
 
 export default class Router extends Component {
@@ -26,6 +27,7 @@ export default class Router extends Component {
               <Route path="/home" component={Home} />
               <Route path="/mine" component={Mine} />
               <Route path="/address/list" component={AddressList} />
+              <Route path="/address/create" component={AddressCreate} />
               
               <Route component={NoFound} />
             </Switch>
