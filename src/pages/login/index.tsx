@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Flex, InputItem, Button, WingBlank, WhiteSpace, Toast } from 'antd-mobile';
 import style from './index.module.less';
 import { getCode, login } from '@/server/login'
+import Storage from '@/utils/storage'
 
 interface IState {
   phone:string;
@@ -96,8 +97,8 @@ class Login extends React.Component<any, IState>{
     if(code === '0'){
       const { token, userInfo } = data
 
-      // localStorage.setItem('token', res.datas.token);
-      // localStorage.setItem('customerId', res.datas.customerInfo.customerId);
+      Storage.setItem('token', token)
+      Storage.setItem('userInfo', userInfo)
       this.props.setToken(token)
       this.props.setUserInfo(userInfo)
       

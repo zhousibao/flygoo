@@ -1,6 +1,8 @@
+import Storage  from '@/utils/storage';
+
 const defaultState:IStoreUser= {
-  token: '', 
-  userInfo: {}, // 用户信息
+  token: Storage.getItem('token'), 
+  userInfo: Storage.getItem('userInfo') || {}, // 用户信息
 }
 
 const user = function(state = defaultState, action:IAction){
