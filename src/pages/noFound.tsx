@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react'
+import React, { Component } from 'react'
 import { Result, Flex, WhiteSpace } from 'antd-mobile';
 import { Link } from 'react-router-dom'
 
@@ -15,7 +15,7 @@ export default class NoFound extends Component<IProps, IState> {
   /**
    * 挂载阶段
    */
-  
+
   // Readonly是泛型的类型别名，将对应的所有属性设置为只读属性，不能对其直接赋值。
   public state: Readonly<IState> = {
     count: 0,

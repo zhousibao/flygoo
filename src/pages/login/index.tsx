@@ -21,8 +21,9 @@ class Login extends React.Component<any, IState>{
   
 
   // 表单获取value
-  // Pick 从复合类型中获取几个想要的类型组合
-  onChange = (key:string, val:string) => {
+  // keyof 获取某种类型的所有键
+  // Pick<T,K> 通过从T中选择属性集K来构造新类型 //从复合类型中获取几个想要的类型组合
+  onChange = (key:keyof IState, val:string) => {
     this.setState({
       [key]: val,
     } as Pick<IState, 'phone' | 'msgCode'>)
