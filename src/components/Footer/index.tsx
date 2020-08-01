@@ -10,6 +10,7 @@ import mine from '@/assets/menu/icon_mine.png';
 import mineSelected from '@/assets/menu/icon_mine_selected.png';
 
 
+// RouteComponentProps 关联路由props
 const  Menu:FC<RouteComponentProps> = (props) => {
   const path = props.location.pathname;
   return (
