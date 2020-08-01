@@ -1,4 +1,5 @@
 import React  from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Flex, InputItem, Button, WingBlank, WhiteSpace, Toast } from 'antd-mobile';
 import style from './index.module.less';
@@ -11,8 +12,14 @@ interface IState {
   tip:string;
   canTip:boolean;
 }
+interface dispatchProps{
+  setToken:(token:string) => void;
+  setUserInfo:(userInfo:IAnyObj) => void
+}
+// 交叉类型关联 RouteComponentProps 和 IStoreUser 和 dispatchProps
+type IProps = RouteComponentProps &  IStoreUser & dispatchProps
 
-class Login extends React.Component<any, IState>{
+class Login extends React.Component<IProps, IState>{
   public state: Readonly<IState> = {
     phone: '15555115232',
     msgCode: '123456',

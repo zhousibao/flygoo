@@ -11,7 +11,7 @@ import manImg from '@/assets/mine/icon_man@2x.png'
 import womanImg from '@/assets/mine/icon_woman@2x.png'
 
 // 交叉类型关联 IStoreUser 和 RouteComponentProps
-type IProps = IStoreUser & RouteComponentProps
+type IProps =  RouteComponentProps & IStoreUser
 class Mine extends Component<IProps, any> {
   componentDidMount(){
     if(!this.props.token){
@@ -71,7 +71,7 @@ class Mine extends Component<IProps, any> {
 
             <List>
               <List.Item arrow="horizontal" onClick={() => this.go('/orderList')}>我的订单</List.Item>
-              <List.Item arrow="horizontal" onClick={() => this.go('/addressList')}>地址管理</List.Item>
+              <List.Item arrow="horizontal" onClick={() => this.go('/address/list')}>地址管理</List.Item>
             </List>
 
 

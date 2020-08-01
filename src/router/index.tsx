@@ -11,6 +11,7 @@ import NoFound from '@/pages/noFound'
 const Home = lazy(() => import('@/pages/home'))
 const Login = lazy(() => import('@/pages/login'))
 const Mine = lazy(() => import('@/pages/mine'))
+const AddressList = lazy(() => import('@/pages/address/list'))
 
 
 export default class Router extends Component {
@@ -21,9 +22,11 @@ export default class Router extends Component {
           <Suspense fallback={<div>加载中...</div>}>
             <Switch>
               <Redirect exact from="/" to="/home" />
+              <Route path="/login" component={Login} />
               <Route path="/home" component={Home} />
               <Route path="/mine" component={Mine} />
-              <Route path="/login" component={Login} />
+              <Route path="/address/list" component={AddressList} />
+              
               <Route component={NoFound} />
             </Switch>
           </Suspense>
