@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Picker, List } from 'antd-mobile'
 
 interface AddressSelectProps {
+  title?:string;
   defaultValue?:[];
   pleceholder?:string;
   // onChange:(value) => void
@@ -13,7 +14,7 @@ interface dispatchProps{
 
 type Iprops = IStoreApp & dispatchProps & AddressSelectProps
 const AddressSelect:FC<Iprops> = (props) => {
-  const { areaList, sagaGetAddressSelect, defaultValue, pleceholder = '请选择' } = props
+  const { areaList, sagaGetAddressSelect, title = '所在地区', defaultValue, pleceholder = '请选择' } = props
 
   const [value, setValue] = useState(defaultValue)
   useEffect(() => {
@@ -35,7 +36,7 @@ const AddressSelect:FC<Iprops> = (props) => {
     <>
       <Picker 
         data={areaList}
-        title="所在地区"
+        title={title}
         extra={pleceholder}
         cols={3}
         value={value}
