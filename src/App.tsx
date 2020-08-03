@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 // import { connect } from 'react-redux'
 
-import en_US from 'antd-mobile/lib/locale-provider/en_US'; // 国际化
-import { LocaleProvider } from 'antd-mobile';
+// import en_US from 'antd-mobile/lib/locale-provider/en_US'; // 国际化
+// import { LocaleProvider } from 'antd-mobile';
+// antd-mobile 默认是中文
 
 
 import moment from 'moment';
@@ -17,9 +18,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <LocaleProvider locale={en_US}>
-          {this.props.children}
-        </LocaleProvider>
+        {/* <LocaleProvider locale={en_US}> */}
+        {this.props.children}
+        {/* </LocaleProvider> */}
       </div>
     )
   }

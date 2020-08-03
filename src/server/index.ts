@@ -16,15 +16,12 @@ import request from '@/utils/axios'
  */
 
 
-// 权限 获取用户角色菜单
-export function permissionInfo(appCode){
+// 权限 获取省市区地址
+export function addressSelect(){
   return request({
-    url: '/api/auth/sys/initInfo',
+    url: '/api/common/addressSelect',
     method: 'GET',
     json: true,
-    params: {
-      appCode,
-    },
   })
 }
 

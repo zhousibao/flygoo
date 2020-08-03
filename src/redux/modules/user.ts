@@ -5,7 +5,7 @@ const defaultState:IStoreUser= {
   userInfo: Storage.getItem('userInfo') || {}, // 用户信息
 }
 
-const user = function(state = defaultState, action:IAction){
+const user = (state = defaultState, action:IAction) => {
   const { type, payload } = action
 
   switch (type) {

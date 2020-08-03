@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom'
-import { InputItem, List, Picker } from 'antd-mobile';
+import { InputItem, List } from 'antd-mobile';
+
+import { AddressSelect } from '@/components'
+
+import style from './create.module.less'
 
 type Iprops = RouteComponentProps & IStoreUser
 class Index extends Component<Iprops>{
@@ -34,92 +38,41 @@ class Index extends Component<Iprops>{
     // 使用 Web api URLSearchParams 解析query
     const query = new URLSearchParams(this.props.location.search)
     if(query.get('id')){
+      console.log('编辑')
       // 编辑
 
     }
   }
 
   //表单获取value
-  // onChange(key, val){
-  //   this.setState({
-  //     [key]: val,
-  //   })
-  // }
+  onChange(key, val){
+    this.setState({
+      [key]: val,
+    })
+  }
 
 
   render(){
     console.log(this.props);
     // console.log(this.state.address);
-    const datas = [
-      {
-        value: '上海',
-        children: [
-          {
-            value: '上海',
-            children: [
-              {
-                value: '黄浦',
-              },
-              {
-                value: '浦东',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        value: '安徽省',
-        children: [
-          {
-            value: '合肥',
-            children: [
-              {
-                value: '滨湖',
-              },
-              {
-                value: '肥西',
-              },
-            ],
-          },
-          {
-            value: '蚌埠',
-            children: [
-              {
-                value: '怀远',
-              },
-              {
-                value: '龙子湖',
-              },
-            ],
-          },
-        ],
-      },
-    ];
+
+    
     return(
       <div>
-        {/* <div className="address-container">
+        <div className={style.container}>
           <List>
             <InputItem placeholder="请输入收货人姓名"
               onChange={v=>this.onChange('name', v)}>收货人</InputItem>
-            <InputItem type="number" maxLength="11" placeholder="请输入手机号"
+            <InputItem type="number" maxLength={11} placeholder="请输入手机号"
               onChange={v=>this.onChange('phone', v)}> 联系电话</InputItem>
 
-            <Picker extra="请选择"
-              data={datas}
-              title="Areas"
-              cols="3"
-
-              onOk={e => console.log('ok', e)}
-              onDismiss={e => console.log('dismiss', e)}
-            >
-              <List.Item arrow="horizontal">所在地区</List.Item>
-            </Picker>
+            <AddressSelect/>
           </List>
 
 
-        </div> */}
+        </div>
 
-        <div className="addressCreate">保存</div>
+        <div className={style.create}>保存</div>
       </div>
     )
   }

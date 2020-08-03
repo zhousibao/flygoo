@@ -1,18 +1,16 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { permissionInfo } from '@/server/app'
+import { addressSelect } from '@/server'
 
 
 /**
  * worker Saga : 将在 action 被 dispatch 时调用
  * */ 
 // 权限
-function* getPermission(action){
+function* getAddressSelect(){
   try{
-    const res = yield call(permissionInfo, action.payload)
-    if(res.code === '0'){
-      const { permission, me } = res.data
-      yield put({ type: "set_permissionList", payload: permission });
-      yield put({ type: "set_user", payload: me });
+    const { code, data } = yield call(addressSelect)
+    if(code === '0'){
+      yield put({ type: 'set_areaList', payload: data.list });
     }
   } catch(e) {
     console.log(e)
@@ -24,7 +22,7 @@ function* getPermission(action){
  * watch Saga :监听 action
  * */ 
 export default function* appSaga() {
-  yield takeEvery("saga_getPermission", getPermission);
+  yield takeEvery("saga_getAddressSelect", getAddressSelect);
 
 }
 
