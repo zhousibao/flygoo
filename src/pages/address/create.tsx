@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom'
-import { InputItem, TextareaItem, Switch, List } from 'antd-mobile';
+import { InputItem, TextareaItem, Switch, List, Toast } from 'antd-mobile';
 
 import { AddressSelect } from '@/components'
-import { addressDetail } from '@/server/address'
+import { addressDetail, addressCreate, addressEdit } from '@/server/address'
 
 import style from './create.module.less'
 
@@ -13,6 +13,7 @@ import style from './create.module.less'
  */
 type IAreaName = [string, string, string];
 interface IState {
+  id:string;
   name:string;
   tel:string;
   areaName:IAreaName;
@@ -22,6 +23,7 @@ interface IState {
 type Iprops = RouteComponentProps & IStoreUser
 class Index extends Component<Iprops, IState>{
   public state: Readonly<IState> = {
+    id: '',
     name: '',
     tel: '',
     areaName: ['', '', ''],
@@ -33,17 +35,24 @@ class Index extends Component<Iprops, IState>{
   componentDidMount(){
     // 使用 Web api URLSearchParams 解析query
     const query = new URLSearchParams(this.props.location.search)
-    if(query.get('id')){
+    if(query.get('id')){ // 获取不到返回null
       // 编辑
-      this.getDetail(query.get('id') as string)
+      this.setState(
+        ()=> {
+          return { id: query.get('id') as string }
+        }, 
+        () => {
+          this.getDetail()
+        },
+      )
     }
   }
 
   // 获取地址详情
-  getDetail = async (id:string) => {
+  getDetail = async () => {
     const where ={
       token: this.props.token,
-      id: id,
+      id: this.state.id,
     }
     const { code, data } = await addressDetail(where)
     if(code === '0'){
@@ -70,6 +79,22 @@ class Index extends Component<Iprops, IState>{
     this.setState({
       areaName: area,
     })
+  }
+  // submit
+  submit = async() => {
+    if(this.state.id){
+      const { code, message } = await addressEdit(this.state)
+      if(code === '0'){
+        Toast.success(message, 1)
+        this.props.history.goBack()
+      }
+    } else {
+      const { code, message } = await addressCreate(this.state)
+      if(code === '0'){
+        Toast.success(message, 1)
+        this.props.history.goBack()
+      }
+    }
   }
 
 
@@ -112,7 +137,7 @@ class Index extends Component<Iprops, IState>{
           </List>
         </div>
 
-        <div className={style.create}>保存</div>
+        <div className={style.create} onClick={this.submit}>保存</div>
       </div>
     )
   }

@@ -19,3 +19,33 @@ export function addressDetail(params){
     params,
   })
 }
+
+// 新增收获地址
+export function addressCreate(data){
+  return request({
+    url: '/api/address/create',
+    method: 'POST',
+    json: true,
+    data,
+  })
+}
+
+// 编辑收获地址
+export function addressEdit(data){
+  return request({
+    url: '/api/address/edit',
+    method: 'POST',
+    json: true,
+    data,
+  })
+}
+
+// 删除收获地址
+export function addressDelete(data){
+  return request({
+    url: '/api/address/delete',
+    method: 'POST',
+    json: true,
+    data,
+  })
+}
