@@ -8,8 +8,9 @@ import NoFound from '@/pages/noFound'
 /***
  * 路由懒加载  
  */
-const Home = lazy(() => import('@/pages/home'))
 const Login = lazy(() => import('@/pages/login'))
+const Home = lazy(() => import('@/pages/home'))
+const Cart = lazy(() => import('@/pages/cart'))
 const Mine = lazy(() => import('@/pages/mine'))
 const AddressList = lazy(() => import('@/pages/address/list'))
 const AddressCreate = lazy(() => import('@/pages/address/create'))
@@ -25,6 +26,7 @@ export default class Router extends Component {
               <Redirect exact from="/" to="/home" />
               <Route path="/login" component={Login} />
               <Route path="/home" component={Home} />
+              <Route path="/cart" component={Cart} />
               <Route path="/mine" component={Mine} />
               <Route path="/address/list" component={AddressList} />
               <Route path="/address/create" component={AddressCreate} />
