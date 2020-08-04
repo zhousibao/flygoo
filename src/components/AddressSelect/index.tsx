@@ -1,12 +1,13 @@
-import React, { useState, useEffect, FC } from 'react'
+import React, { useEffect, FC } from 'react'
 import { connect } from 'react-redux'
 import { Picker, List } from 'antd-mobile'
 
+type IAreaName = [string, string, string];
 interface AddressSelectProps {
   title?:string;
-  defaultValue?:[];
   pleceholder?:string;
-  // onChange:(value) => void
+  value?:IAreaName;
+  onChange:(value:IAreaName) => void;
 }
 interface dispatchProps{
   sagaGetAddressSelect:() => void;
@@ -14,9 +15,16 @@ interface dispatchProps{
 
 type Iprops = IStoreApp & dispatchProps & AddressSelectProps
 const AddressSelect:FC<Iprops> = (props) => {
-  const { areaList, sagaGetAddressSelect, title = '所在地区', defaultValue, pleceholder = '请选择' } = props
+  const { 
+    areaList, 
+    sagaGetAddressSelect, 
+    value, 
+    title = '所在地区', 
+    pleceholder = '请选择', 
+    onChange, 
+  } = props
+  
 
-  const [value, setValue] = useState(defaultValue)
   useEffect(() => {
     !areaList.length && sagaGetAddressSelect()
   }, [areaList.length, sagaGetAddressSelect])
@@ -26,10 +34,8 @@ const AddressSelect:FC<Iprops> = (props) => {
     return labels.toString().replace(/,/g, ' ')
   }
   // 确认
-  const ok = (value) => {
-    console.log(value)
-    // onChange(value)
-    setValue(value)
+  const ok = (value:IAreaName) => {
+    onChange(value)
   }
 
   return (
