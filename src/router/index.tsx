@@ -14,6 +14,7 @@ const Cart = lazy(() => import('@/pages/cart'))
 const Mine = lazy(() => import('@/pages/mine'))
 const AddressList = lazy(() => import('@/pages/address/list'))
 const AddressCreate = lazy(() => import('@/pages/address/create'))
+const Goods = lazy(() => import('@/pages/goods'))
 
 
 export default class Router extends Component {
@@ -30,6 +31,7 @@ export default class Router extends Component {
               <Route path="/mine" component={Mine} />
               <Route path="/address/list" component={AddressList} />
               <Route path="/address/create" component={AddressCreate} />
+              <Route path="/goods" component={Goods} />
               
               <Route component={NoFound} />
             </Switch>
