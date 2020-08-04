@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Modal, Toast, Flex } from 'antd-mobile';
 import { Image } from '@/components';
 
-import { addresslist } from '@/server/address'
+import { addresslist, addressDelete } from '@/server/address'
 
 import style from './list.module.less'
 import editImg from '@/assets/address/icon_edit@2x.png'
@@ -77,11 +77,15 @@ class AddressList extends Component<Iprops>{
     }
   }
   // 删除地址
-  delete = (id:number) => {
-    const list = this.state.addressList.filter(item => item.id !== id)
-    this.setState({
-      addressList: list,
-    })
+  delete = async(id:number) => {
+    const { code, message } =await addressDelete({ id })
+    if(code === '0'){
+      Toast.success(message, 1)
+      const list = this.state.addressList.filter(item => item.id !== id)
+      this.setState({
+        addressList: list,
+      })
+    }
   }
 
     
