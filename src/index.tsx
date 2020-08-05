@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '@/style/index.css';
+// 淘宝弹性布局方案lib-flexible
+import 'lib-flexible';
+import '@/style/index.less';
+
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import store from '@/redux'

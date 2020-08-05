@@ -64,7 +64,7 @@ class Mine extends Component<IProps, any> {
                 </Flex.Item>
                 <Flex.Item className={style.li}>
                   <Image src={conponImg} width="22px" height="23px"/>
-                  <span style={{ paddingLeft: 10 }}>优惠券</span>
+                  <span>优惠券</span>
                 </Flex.Item>
               </Flex>
             </div>
