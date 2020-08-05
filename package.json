@@ -95,6 +95,7 @@
     "pro": "npm run build:pro",
     "test": "node scripts/test.js"
   },
+  "homepage": ".",
   "eslintConfig": {
     "extends": "react-app"
   },

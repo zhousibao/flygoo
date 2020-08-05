@@ -1,5 +1,5 @@
-const node_env = process.env.NODE_ENV
-const env = process.env.REACT_APP_ENV
-const AppName  = process.env.REACT_APP_APP_NAME
+const NODE_ENV = process.env.NODE_ENV
+const APP_ENV = process.env.REACT_APP_ENV
+const APP_NAME  = process.env.REACT_APP_APP_NAME
 
-export default { node_env, env, AppName }
+export { NODE_ENV, APP_ENV, APP_NAME }

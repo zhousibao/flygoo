@@ -2,6 +2,7 @@ import axios from 'axios'
 import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css'// Progress 进度条样式
 import { Toast } from 'antd-mobile'
+import { NODE_ENV } from '@/config'
 
 // axios 拦截请求
 axios.interceptors.request.use(function(config) {
@@ -29,7 +30,14 @@ axios.interceptors.response.use(function(response) {
 // http request
 export default function request({ url, method = 'POST', json = true, params = {}, data= {}}){
   return new Promise((resolve, reject) => {
+    // 生产环境配置baseURl // 不配置则相对于根目录
+    // baseURL: ' http://mock.studyinghome.com/mock/5f213d64e525ff20854f7d96/flygoo-api',
+    let baseURL = ''
+    if(NODE_ENV !== 'development'){
+      baseURL = 'http://mock.studyinghome.com/mock/5f213d64e525ff20854f7d96/flygoo-api'
+    }
     axios({
+      baseURL: baseURL,
       url,
       method,
       json,
