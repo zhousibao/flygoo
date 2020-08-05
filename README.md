@@ -1,23 +1,23 @@
 # Flygoo
 
-一个基于 [Create React App](https://github.com/facebook/create-react-app) 的项目。
+一个基于 [Create React App](https://github.com/facebook/create-react-app) 搭建的移动端H5项目。
 
 ## 技术栈
 typescript、react、redux、redux-saga、react-router-dom、axios、less、sass、antd-mobile
 
 ##
-`既然选择了typescript，就不要到用any`
+`既然选择了typescript，就不要导出使用any`
 ##
 
-## Available Scripts
+## scripts
 
-### `yarn start`
-
+#### `yarn start`
 开发环境 [http://localhost:2000](http://localhost:3000)
 
 ### `yarn pro`
-
 生产环境打包
+
+`更多请查看package.json`
 
 ## 项目依赖介绍
 
@@ -41,24 +41,11 @@ typescript、react、redux、redux-saga、react-router-dom、axios、less、sass
 ```
 ├── README.md
 ├── config // webpack配置
-│   ├── env.js
-│   ├── getHttpsConfig.js
-│   ├── jest
-│   │   ├── cssTransform.js
-│   │   └── fileTransform.js
-│   ├── modules.js
-│   ├── paths.js
-│   ├── pnpTs.js
-│   ├── webpack.config.js
-│   └── webpackDevServer.config.js
 ├── package.json
 ├── public
 │   ├── favicon.ico
 │   └── index.html
 ├── scripts // 打包配置
-│   ├── build.js
-│   ├── start.js
-│   └── test.js
 ├── src // 项目代码
 │   ├── App.tsx
 │   ├── assets // 静态资源
@@ -79,31 +66,23 @@ typescript、react、redux、redux-saga、react-router-dom、axios、less、sass
 │   │   │   └── user.ts
 │   │   └── saga.ts // saga
 │   ├── router // 路由
-│   │   └── index.tsx
 │   ├── server // server地址
-│   │   ├── index.ts
 │   ├── serviceWorker.ts
 │   ├── setupProxy.js // dev proxy配置
 │   ├── style // 全局样式
-│   │   ├── antd.module.less
-│   │   ├── app.less
-│   │   ├── index.less
-│   │   ├── mixin.less
-│   │   ├── reset.less
-│   │   └── variables.less
-│   ├── types // 全局type
-│   │   ├── globle.d.ts
-│   │   └── redux.d.ts
+│   ├── types // 全局type.d.ts
 │   └── utils // 工具
-│       ├── axios.js
-│       ├── eventBus.ts
-│       ├── index.ts
-│       └── storage.ts
 ├── tsconfig.json
 └── yarn.lock
 ```
-## Learn More
 
+## 代码规范
+本项目采用了  ESLint 来进行代码规范约束，配置文件为根目录下的 .eslintrc.js 文件。
+
+## 推荐编辑器
+强烈推荐 VSCode 进行代码编辑
+
+## Learn More
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
