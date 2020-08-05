@@ -51,7 +51,7 @@ class Home extends Component<any, any> {
   render(){
     const { tabs, contentList } = this.state;
     return(
-      <div>
+      <>
         <div className={style.tabCon}>
           <Tabs tabs={tabs} renderTab={tab => <span>{tab.name}</span>}/>
         </div>
@@ -59,12 +59,12 @@ class Home extends Component<any, any> {
         <div className={style.homeCon} id="homeCon">
           { contentList.map(item => 
             item.type === 1 && 
-            <div key={item.id}>
+            <div key={item.id} className="mb10">
               <ModuleType1 list={item.moduleOne}/>
             </div> 
             ||
             item.type === 2 && 
-            <div key={item.id}>
+            <div key={item.id} className="mb10">
               <ModuleType2 
                 title={item.moduleTwo.title}
                 linkAddress={item.moduleTwo.linkAddress}
@@ -73,19 +73,19 @@ class Home extends Component<any, any> {
             </div>
             ||
             item.type === 3 && 
-            <div key={item.id}>
+            <div key={item.id} className="mb10">
               <ModuleType3 list={item.moduleThree}/>
             </div>
             ||
             item.type === 4 && 
-            <div key={item.id}>
+            <div key={item.id} className="mb10">
               <ModuleType4 detail={item.moduleFour} />
             </div>, 
           )}
         </div>
 
         <Footer/>
-      </div>
+      </>
     )
   }
 }

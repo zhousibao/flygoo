@@ -17,7 +17,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="app-app">
         {/* <LocaleProvider locale={en_US}> */}
         {this.props.children}
         {/* </LocaleProvider> */}

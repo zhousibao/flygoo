@@ -21,16 +21,18 @@ const Index:FC<ModuleProps> = (props) => {
   const { title, description, list } = props.detail
   return (
     <>
-      <div className={style.title}>{title}</div>
-      <div className={style.description}>{description}</div>
-      <div className={style.module}>
-        {
-          list.map(item => 
-            <a className={style.module} href={item.linkAddress} key={item.id}>
-              <Image src={item.pic} width="50vw" height="50vw"/>
-            </a>,
-          )
-        }
+      <div className={style.module4}>
+        <div className={style.title}>{title}</div>
+        <div className={style.description}>{description}</div>
+        <div className={style.module}>
+          {
+            list.map(item => 
+              <a className={style.module} href={item.linkAddress} key={item.id}>
+                <Image src={item.pic} width="50vw" height="50vw"/>
+              </a>,
+            )
+          }
+        </div>
       </div>
     </>
   )
