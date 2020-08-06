@@ -9,12 +9,15 @@ interface ModuleProps {
 }
 
 const Index:FC<ModuleProps> = (props) => {
-  const { linkAddress, imgSrc } = props
+  const { title, linkAddress, imgSrc } = props
   return (
     <>
-      <a className={style.module} href={linkAddress}>
-        <Image src={imgSrc} width="100vw" height="150px"/>
-      </a>
+      <div className={style.module2}>
+        <a className={style.module} href={linkAddress}>
+          <Image src={imgSrc} width="100vw" height="200px"/>
+        </a>
+        <div className={style.ceng}>{title}</div>
+      </div>
     </>
   )
 }

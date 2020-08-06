@@ -74,7 +74,7 @@ class Home extends Component<any, any> {
             ||
             item.type === 3 && 
             <div key={item.id} className="mb10">
-              <ModuleType3 list={item.moduleThree}/>
+              <ModuleType3 title={item.moduleThree.title} list={item.moduleThree.list}/>
             </div>
             ||
             item.type === 4 && 
