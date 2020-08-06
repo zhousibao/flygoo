@@ -21,16 +21,34 @@ interface IData {
   message?:string;
 }
 
-// 配置baseURl,不配置则相对于根目录
-// baseURL: ' http://mock.studyinghome.com/mock/5f213d64e525ff20854f7d96/flygoo-api',
-let baseURL = ''
-if(NODE_ENV !== 'development'){
-  baseURL = 'http://mock.studyinghome.com/mock/5f213d64e525ff20854f7d96/flygoo-api'
-}
+/* 防止重复提交，利用axios的cancelToken */
+let pendingList: any[] = []; // 声明一个数组用于存储每个ajax请求的取消函数和ajax标识
+const CancelToken: any = axios.CancelToken;
+const handlePending: any = (config: any, cancel: any) => {
+  // 获取请求的url
+  const { url } = config;
+  // 判断该请求是否在请求队列中
+  if (pendingList.includes(url)) {
+    // 如果在请求中，并存在cancel, 
+    if (cancel) {
+      // console.log('取消重复请求')
+      cancel("取消重复请求"); // 执行取消操作
+    } else {
+      pendingList.splice(pendingList.indexOf(url), 1); // 把这条记录从数组中移除
+    }
+  } else {
+    // 如果不存在在请求队列中，加入队列
+    if (cancel) {
+      pendingList.push(url);
+    }
+  }
+};
+
 
 /* 创建axios实例 */
+const baseURL = 'http://mock.studyinghome.com/mock/5f213d64e525ff20854f7d96/flygoo-api'
 const service = axios.create({
-  baseURL: baseURL, //** 基础地址 要请求的url前缀  
+  baseURL: NODE_ENV === 'development' ? '' : baseURL,
   timeout: 10000, // 请求超时时间
 });
 
@@ -38,6 +56,11 @@ const service = axios.create({
 // axios 拦截请求
 service.interceptors.request.use((config:AxiosRequestConfig) => {
   NProgress.start()
+  // cancel即axios提供的取消函数
+  config.cancelToken = new CancelToken((cancel: any) => {
+    handlePending(config, cancel);
+  });
+
   return config
 }, () => {
   return Promise.reject({ message: 'request error' });
@@ -46,6 +69,9 @@ service.interceptors.request.use((config:AxiosRequestConfig) => {
 // axios 拦截响应
 service.interceptors.response.use((response:AxiosResponse) => {
   NProgress.done()
+  // 移除队列中的该请求，注意这时候没有传第二个参数f
+  handlePending(response.config);
+
   return response
 }, (error:AxiosError) => {
   NProgress.done()

@@ -6,7 +6,7 @@
 typescript、react、redux、redux-saga、react-router-dom、axios、less、sass、antd-mobile
 
 ##
-`既然选择了typescript，就不要导出使用any`
+`既然选择了typescript，就不要到处使用any`
 ##
 
 ## scripts

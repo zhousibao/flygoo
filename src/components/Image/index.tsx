@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, HTMLAttributes } from 'react';
 
 interface ImagePorps {
   src:string;
@@ -7,8 +7,11 @@ interface ImagePorps {
   className?:string
 }
 
-const Image:FC<ImagePorps> = (props) => {
-  const { src, height, width, className } = props
+// <HTMLAttributes<HTMLElement>:原生元素的属性
+// Partial : 构造给定类型的说有子集，即所有参数可选
+type IProps = Partial<HTMLAttributes<HTMLElement>> & ImagePorps
+const Image:FC<IProps> = (props) => {
+  const { src, height, width, className, ...restProps } = props
   const style = {
     backgroundImage: `url(${src})`,
     height,
@@ -19,9 +22,9 @@ const Image:FC<ImagePorps> = (props) => {
     
   };
 
-
   return (
-    <div style={style} className={className}/>
+    // restProps // 注意把props传给元素
+    <div {...restProps} style={style}  className={className}/>
   )
 }
 

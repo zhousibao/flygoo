@@ -23,6 +23,10 @@ class Mine extends Component<IProps, any> {
     this.props.history.push(path);
   }
 
+  handleClick = () => {
+    console.log('handleClick')
+  }
+
   render() {
     const { token, userInfo } = this.props
     return (
@@ -38,6 +42,7 @@ class Mine extends Component<IProps, any> {
                     width="60px"
                     height="60px"
                     className={style.avatar}
+                    onClick={this.handleClick}
                   />
                   <div className="gender">
                     {userInfo.sex === 1 &&
