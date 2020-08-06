@@ -40,7 +40,7 @@ class Home extends Component<any, any> {
   getMenuContent = async (id:number) => {
     const { code, data } = await menuContent({ id })
     if(code === '0'){
-      console.log(data)
+      // console.log(data)
       this.setState({
         contentList: data?.list,
       })
