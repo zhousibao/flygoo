@@ -1,3 +1,5 @@
+import { type } from "os";
+
 /**
  * @description 节流函数
  * @param fn 需要处理的函数
@@ -35,6 +37,24 @@ const debounce = (fn:Function, delay:number = 200, immediate:boolean= true) => {
       fn.apply(this, args);
     }, delay);
   }
-  
 }
-export { throttle, debounce }
+
+
+/**
+ * @description 深拷贝
+ * @param obj 
+ */
+const deepCopy = (obj:any) => {
+  if(typeof obj !== 'object' || obj === null){
+    return obj
+  }
+
+  const result = Array.isArray(obj) ? [] : {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      result[key] = deepCopy(obj[key]);  // 递归复制
+    }
+  }
+  return result;
+}
+export { throttle, debounce, deepCopy }
