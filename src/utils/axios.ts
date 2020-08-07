@@ -82,15 +82,24 @@ service.interceptors.response.use((response:AxiosResponse) => {
 })
 
 
-// http request
-export default (config:IRequest):Promise<IData> => {
-  const { url, method = 'POST', json = true, params = {}, data= {}} = config
+/**
+ * @description axios请求
+ * @param url
+ * @param method
+ * @param json content-type
+ * @param data
+ * @param params
+ * @param timeout
+ */
+const request = (config:IRequest):Promise<IData> => {
+  const { url, method = 'POST', json = true, params = {}, data= {}, timeout = 10000 } = config
   return new Promise((resolve, reject) => {
     service({
       url,
       method,
       params,
       data,
+      timeout,
       headers: {
         'content-type': json ? 'application/json; charset=UTF-8' : 'application/x-www-form-urlencoded; charset=UTF-8',
       },
@@ -131,3 +140,5 @@ export default (config:IRequest):Promise<IData> => {
     })
   })
 }
+
+export default request

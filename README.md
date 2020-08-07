@@ -12,7 +12,7 @@ typescript、react、redux、redux-saga、react-router-dom、axios、less、sass
 ## scripts
 
 #### `yarn start`
-开发环境 [http://localhost:2000](http://localhost:3000)
+开发环境 [http://localhost:2000](http://localhost:2000)
 
 ### `yarn pro`
 生产环境打包
