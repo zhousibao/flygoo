@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
 import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css'// Progress 进度条样式
 import { Toast } from 'antd-mobile'
-import { NODE_ENV } from '@/config'
+import { NODE_ENV, APP_API } from '@/config'
 
 type IMethod = "POST" | "get" | "GET" | "delete" | "DELETE" | "head" | "HEAD" | "options" | "OPTIONS" | "post" | "put" | "PUT" | "patch" | "PATCH" | "link" | "LINK" | "unlink" | "UNLINK" | undefined
 
@@ -46,9 +46,8 @@ const handlePending: any = (config: any, cancel: any) => {
 
 
 /* 创建axios实例 */
-const baseURL = 'http://mock.studyinghome.com/mock/5f213d64e525ff20854f7d96/flygoo-api'
 const service = axios.create({
-  baseURL: NODE_ENV === 'development' ? '' : baseURL,
+  baseURL: NODE_ENV === 'development' ? '' : APP_API,
   timeout: 10000, // 请求超时时间
 });
 
