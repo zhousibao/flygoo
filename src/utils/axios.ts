@@ -16,7 +16,7 @@ interface IRequest {
 }
 
 interface IData {
-  code?:string;
+  code?:number;
   data?:any;
   message?:string;
 }
@@ -115,13 +115,14 @@ const request = (config:IRequest):Promise<IData> => {
         */
        
       if (res.status === 200) {
-        if(res.data.code === '403'){
+        // console.log(res)
+        if(res.data.code === 403){
           // 在此进行业务需求改造 例如 重定向至登录
           Toast.fail(res.data.message)
           return reject(res.data)
         }
 
-        if(res.data.code === '1'){
+        if(res.data.code === 1){
           Toast.fail(res.data.message)
           return reject(res.data)
         }

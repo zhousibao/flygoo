@@ -40,7 +40,7 @@ class Goods extends Component<any, IState> {
   //获取商品详情
   getGoods = async(id:string) => {
     const { code, data } = await goodsDetail({ id })
-    if(code === '0'){
+    if(code === 0){
       this.setState({
         goods: data,
       })

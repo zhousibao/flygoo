@@ -55,7 +55,7 @@ class Index extends Component<Iprops, IState>{
       id: this.state.id,
     }
     const { code, data } = await addressDetail(where)
-    if(code === '0'){
+    if(code === 0){
       const { addressDetail: { name, tel, areaName, address, isDefault  }} = data
       this.setState({
         name,
@@ -84,13 +84,13 @@ class Index extends Component<Iprops, IState>{
   submit = async() => {
     if(this.state.id){
       const { code, message } = await addressEdit(this.state)
-      if(code === '0'){
+      if(code === 0){
         Toast.success(message, 1)
         this.props.history.goBack()
       }
     } else {
       const { code, message } = await addressCreate(this.state)
-      if(code === '0'){
+      if(code === 0){
         Toast.success(message, 1)
         this.props.history.goBack()
       }

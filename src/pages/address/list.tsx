@@ -40,7 +40,7 @@ class AddressList extends Component<Iprops>{
       token: this.props.token,
     }
     const { code, data } = await addresslist(where)
-    if(code === '0'){
+    if(code === 0){
       this.setState({
         addressList: data.list,
       })
@@ -79,7 +79,7 @@ class AddressList extends Component<Iprops>{
   // 删除地址
   delete = async(id:number) => {
     const { code, message } =await addressDelete({ id })
-    if(code === '0'){
+    if(code === 0){
       Toast.success(message, 1)
       const list = this.state.addressList.filter(item => item.id !== id)
       this.setState({

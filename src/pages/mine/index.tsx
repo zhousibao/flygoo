@@ -38,7 +38,7 @@ class Mine extends Component<IProps, any> {
               <Flex justify="center">
                 <div className={style.avatar_con}>
                   <Image 
-                    src={userInfo.image}
+                    src={userInfo.avatar}
                     width="60px"
                     height="60px"
                     className={style.avatar}

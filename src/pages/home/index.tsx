@@ -30,7 +30,7 @@ class Home extends Component<any, any> {
 
   getCommonTags = async () => {
     const { code, data } = await commonTags()
-    if(code === '0'){
+    if(code === 0){
       this.setState({
         tabs: data?.list,
       })
@@ -39,7 +39,7 @@ class Home extends Component<any, any> {
 
   getMenuContent = async (id:number) => {
     const { code, data } = await menuContent({ id })
-    if(code === '0'){
+    if(code === 0){
       // console.log(data)
       this.setState({
         contentList: data?.list,

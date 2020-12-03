@@ -41,7 +41,7 @@ class Cart extends Component<Iprops> {
   getCartList = async() => {
     const { token } = this.props
     const { code, data } = await cartList({ token })
-    if(code === '0'){
+    if(code === 0){
       const list = data.list.map(item => {
         item.choose = false
         return item

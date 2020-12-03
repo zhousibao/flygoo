@@ -52,7 +52,7 @@ class Login extends React.Component<IProps, IState>{
     }
 
     const { code } = await getCode()
-    if(code === '0'){
+    if(code === 0){
 
       let t:number = 60;
       let interval = window.setInterval( () => {
@@ -100,21 +100,24 @@ class Login extends React.Component<IProps, IState>{
       phone: this.state.phone,
       code: this.state.msgCode,
     }
-    const { code, data } = await login(where)
-    if(code === '0'){
-      const { token, userInfo } = data
-
-      Storage.setItem('token', token)
-      Storage.setItem('userInfo', userInfo)
-      this.props.setToken(token)
-      this.props.setUserInfo(userInfo)
-      
-
-      Toast.success('登录成功', 1);
-      setTimeout(() => {
-        this.props.history.goBack();
-      }, 1000);
-    }
+    
+    try{
+      const { code, data } = await login(where)
+      if(code === 0){
+        const { token, userInfo } = data
+  
+        Storage.setItem('token', token)
+        Storage.setItem('userInfo', userInfo)
+        this.props.setToken(token)
+        this.props.setUserInfo(userInfo)
+        
+  
+        Toast.success('登录成功', 1);
+        setTimeout(() => {
+          this.props.history.goBack();
+        }, 1000);
+      }
+    } catch(e){}
   }
 
 
