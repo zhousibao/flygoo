@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Flex, InputItem, Button, WingBlank, WhiteSpace, Toast } from 'antd-mobile';
 import style from './index.module.less';
-import { getCode, login } from '@/server/login'
+import { getCode, login } from '@/pages/login/api'
 import Storage from '@/utils/storage'
 
 interface IState {

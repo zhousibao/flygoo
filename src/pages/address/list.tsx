@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Modal, Toast, Flex } from 'antd-mobile';
 import { Image } from '@/components';
 
-import { addresslist, addressDelete } from '@/server/address'
+import { addresslist, addressDelete } from '@/pages/address/api'
 
 import style from './list.module.less'
 import editImg from '@/assets/address/icon_edit@2x.png'

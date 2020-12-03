@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Tabs } from 'antd-mobile';
 
 import { Footer } from '@/components';
-import { commonTags, menuContent } from '@/server/home'
+import { commonTags, menuContent } from '@/pages/home/api'
 import ModuleType1 from './components/ModuleType1'
 import ModuleType2 from './components/ModuleType2'
 import ModuleType3 from './components/ModuleType3'

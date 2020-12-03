@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router-dom'
 import { InputItem, TextareaItem, Switch, List, Toast } from 'antd-mobile';
 
 import { AddressSelect } from '@/components'
-import { addressDetail, addressCreate, addressEdit } from '@/server/address'
+import { addressDetail, addressCreate, addressEdit } from '@/pages/address/api'
 
 import style from './create.module.less'
 

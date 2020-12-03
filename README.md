@@ -55,8 +55,10 @@ typescript、react、redux、redux-saga、react-router-dom、axios、less、sass
 │   ├── pages // pages
 │   │   ├── home
 │   │   │   ├── components // 页面组件
-│   │   │   ├── index.module.less // module.less
+│   │   │   ├── api.ts // server地址
+│   │   │   ├── index.module.less // module.less
 │   │   │   └── index.tsx
+│   │   ├── api.ts // 全局server地址
 │   │   └── noFound.tsx // 404
 │   ├── react-app-env.d.ts
 │   ├── redux // redux
@@ -66,7 +68,6 @@ typescript、react、redux、redux-saga、react-router-dom、axios、less、sass
 │   │   │   └── user.ts
 │   │   └── saga.ts // saga
 │   ├── router // 路由
-│   ├── server // server地址
 │   ├── serviceWorker.ts
 │   ├── setupProxy.js // dev proxy配置
 │   ├── style // 全局样式

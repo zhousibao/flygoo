@@ -4,7 +4,7 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import { SwipeAction } from 'antd-mobile';
 import { Footer, Image } from "@/components";
 
-import { cartList } from '@/server/cart'
+import { cartList } from '@/pages/cart/api'
 
 import style from './index.module.less';
 import chooseSelectedImg from '@/assets/cart/icon_choose_selected@2x.png'

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Carousel, List, Modal, Button, Flex, Toast } from 'antd-mobile';
 import { Image } from '@/components';
 
-import { goodsDetail } from '@/server/goods'
+import { goodsDetail } from '@/pages/goods/api'
 
 import style from './index.module.less';
 import collectImg from '@/assets/goods/icon_collect_normal@2x.png'
