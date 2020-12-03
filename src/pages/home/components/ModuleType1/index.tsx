@@ -19,7 +19,7 @@ const Index:FC<ModuleProps> = (props) => {
       <Carousel autoplay={true} infinite dots={false}>
         { list.map(item => (
           <a className={style.module} href={item.linkAddress} key={item.id}>
-            <Image src={item.pic} width="100vw" height="200px"/>
+            <Image src={item.pic} width="100vw" height="160px"/>
           </a>
         ),
         )}

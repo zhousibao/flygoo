@@ -5,16 +5,16 @@ import  { Image }  from '@/components'
 interface ModuleProps {
   title:string;
   linkAddress:string;
-  imgSrc:string;
+  pic:string;
 }
 
 const Index:FC<ModuleProps> = (props) => {
-  const { title, linkAddress, imgSrc } = props
+  const { title, linkAddress, pic } = props
   return (
     <>
       <div className={style.module2}>
         <a className={style.module} href={linkAddress}>
-          <Image src={imgSrc} width="100vw" height="200px"/>
+          <Image src={pic} width="100vw" height="150px"/>
         </a>
         <div className={style.ceng}>{title}</div>
       </div>

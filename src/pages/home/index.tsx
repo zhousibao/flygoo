@@ -13,8 +13,6 @@ import style from './index.module.less';
 class Home extends Component<any, any> {
   constructor(props){
     super(props);
-    // this.getTabs = this.getTabs.bind(this);
-    // this.changeTab = this.changeTab.bind(this);
 
     this.state = {
       tabs: [],
@@ -68,7 +66,7 @@ class Home extends Component<any, any> {
               <ModuleType2 
                 title={item.moduleTwo.title}
                 linkAddress={item.moduleTwo.linkAddress}
-                imgSrc={item.moduleTwo.imgSrc}
+                pic={item.moduleTwo.pic}
               />
             </div>
             ||
