@@ -20,11 +20,19 @@ interface dispatchProps{
 type IProps = RouteComponentProps &  IStoreUser & dispatchProps
 
 class Login extends React.Component<IProps, IState>{
+  private interval:number|undefined = undefined;
+
   public state: Readonly<IState> = {
     phone: '15555115232',
-    msgCode: '123456',
+    msgCode: '',
     tip: '获取验证码', //获取验证码按钮文本
     canTip: false, //是否禁用验证码按钮
+  }
+
+  componentWillUnmount(){
+    if(this.interval){
+      window.clearInterval(this.interval);
+    }
   }
   
 
@@ -51,11 +59,16 @@ class Login extends React.Component<IProps, IState>{
       return false;
     }
 
-    const { code } = await getCode()
+    const where = {
+      phone,
+    }
+    const { code, data } = await getCode(where)
     if(code === 0){
+      const msgCode = String(data.msgCode || '')
+      this.onChange('msgCode', msgCode)
 
       let t:number = 60;
-      let interval = window.setInterval( () => {
+      this.interval = window.setInterval(() => {
         if (t > 0) {
           t--;
           this.setState({
@@ -67,7 +80,7 @@ class Login extends React.Component<IProps, IState>{
             tip: `获取验证码`,
             canTip: false,
           })
-          window.clearInterval(interval);
+          window.clearInterval(this.interval);
         }
       }, 1000);
     }
@@ -80,28 +93,24 @@ class Login extends React.Component<IProps, IState>{
       Toast.fail('请输入手机号码', 2);
       return false;
     }
-
     if(phone.length !== 11){
       Toast.fail('请输入正确的手机号码', 2);
       return false;
     }
-
     if(!msgCode){
       Toast.fail('请输入验证码', 2);
       return false;
     }
-
     if(msgCode.length !== 6){
       Toast.fail('请输入6位验证码', 2);
       return false;
     }
-
-    const where = {
-      phone: this.state.phone,
-      code: this.state.msgCode,
-    }
-    
+ 
     try{
+      const where = {
+        phone: this.state.phone,
+        code: this.state.msgCode,
+      }
       const { code, data } = await login(where)
       if(code === 0){
         const { token, userInfo } = data
@@ -131,14 +140,14 @@ class Login extends React.Component<IProps, IState>{
             type="number" 
             maxLength={11} 
             placeholder="请输入手机号"
-            defaultValue={phone}
+            value={phone}
             onChange={ v =>this.onChange('phone', v) }
           > 手机号</InputItem>
           <InputItem 
             type="number" 
             maxLength={6} 
             placeholder="请输入验证码"
-            defaultValue={msgCode}
+            value={msgCode}
             onChange={v => this.onChange('msgCode', v) }
           >验证码</InputItem>
           <WhiteSpace/>
