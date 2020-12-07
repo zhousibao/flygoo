@@ -19,7 +19,6 @@ class Home extends Component<any, any> {
       contentList: [],
     }
 
-
   }
   componentDidMount(){
     this.getCommonTags();
@@ -45,13 +44,17 @@ class Home extends Component<any, any> {
     }
   }
 
+  changeTab = (tab) => {
+    this.getMenuContent(tab.id)
+  }
+
 
   render(){
     const { tabs, contentList } = this.state;
     return(
       <>
         <div className={style.tabCon}>
-          <Tabs tabs={tabs} renderTab={tab => <span>{tab.name}</span>}/>
+          <Tabs tabs={tabs} renderTab={tab => <span>{tab.name}</span>} onChange={this.changeTab}/>
         </div>
 
         <div className={style.homeCon} id="homeCon">

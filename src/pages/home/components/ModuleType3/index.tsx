@@ -25,7 +25,7 @@ const Index:FC<ModuleProps> = (props) => {
         <div className={style.module}>
           {
             list.map(item => 
-              <a className={style.module} href={item.linkAddress} key={item.id}>
+              <a className={style.module} href={item.linkAddress} key={item.linkAddress}>
                 <Image src={item.pic} width="25vw" height="25vw"/>
               </a>,
             )
